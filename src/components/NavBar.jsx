@@ -11,7 +11,7 @@ const NavBar = () => {
           <div className="flex items-center gap-3">
             <div className="flex  items-center justify-center gap-1" >
               <img src={logo} alt="logo" className='h-12' />
-              ToDo List 
+To-Dos
             </div>
           </div>
           <Profile />
