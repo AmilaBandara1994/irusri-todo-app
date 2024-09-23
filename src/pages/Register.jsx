@@ -5,11 +5,12 @@ import { Link } from 'react-router-dom';
 import { useFormik } from  'formik';
 import * as Yup from 'yup';
 import { useAuth } from '../context/AuthContext';
+import { useEffect } from 'react';
 
 
 const Register = () => {
   const navigate = useNavigate();
-  const {users, setUsers, authUser, setAuthUser, isLoggedIn, setIsLoggedIn} = useAuth()
+  const {users, setUsers} = useAuth()
 
   const formik = useFormik({
     initialValues: {
@@ -28,17 +29,20 @@ const Register = () => {
         email: values.email,
         password: values.password
       }]);
-      localStorage.setItem('users', JSON.stringify(users));
+      // localStorage.setItem('users', JSON.stringify(users));
       
       resetForm({values:''})
       navigate('/login');
     
     }
 
+    
+    
   });
+ 
   return (
     <div className="flex items-center justify-center mt-20">
-    <div className='bg-lime-50 w-[500px] p-10 rounded-xl'>
+    <div className='bg-lime-300 w-[500px] p-10 rounded-xl'>
       <div className="">
       <form onSubmit={formik.handleSubmit}>
         <div className="flex flex-col items-center justify-center gap-2 ">
@@ -46,7 +50,7 @@ const Register = () => {
 
 
             <TextField   name="name" type="text"
-              placeholder="name" className="textField mb-3" 
+              placeholder="name" className="textField mb-3 bg-transparent" 
               slotProps={{
                 input: {
                   startAdornment: (
@@ -66,7 +70,7 @@ const Register = () => {
               formik.touched.name && formik.errors.name ? <div className='text-red-800'>{formik.errors.name}</div> : null
             }
             <TextField   name="email" type="text"
-              placeholder="Email" className="textField mb-3" 
+              placeholder="Email" className="textField mb-3 bg-transparent" 
               slotProps={{
                 input: {
                   startAdornment: (
@@ -86,7 +90,7 @@ const Register = () => {
               formik.touched.email && formik.errors.email ? <div className='text-red-800'>{formik.errors.email}</div> : null
             }
             <TextField  name="password" type="password"
-              placeholder="Password" className="textField" 
+              placeholder="Password" className="textField bg-transparent" 
               slotProps={{
                 input: {
                   startAdornment: (
@@ -108,11 +112,11 @@ const Register = () => {
             }
                    
             <button disabled={!formik.isValid || !formik.dirty} className={`pr-4 flex items-center justify-center pl-4 rounded-lg p-1 font-semibold text-lg ${
-    formik.isValid && formik.dirty ? "bg-lime-500 text-white" : "bg-gray-300 text-gray-500"
+    formik.isValid && formik.dirty ? "bg-lime-700 text-white" : "bg-gray-500 text-gray-200"
   }  `} type='submit'>
     {/* < />   */}
   Register</button>
-            <p>Already have an Account? <Link className='text-zinc-300' to="/login">Sign in</Link></p>
+            <p>Already have an Account? <Link className='text-sky-500' to="/login">Sign in</Link></p>
         </div>
       </form>
       </div>

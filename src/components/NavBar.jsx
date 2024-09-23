@@ -9,6 +9,7 @@ const NavBar = () => {
     <div className=' bg-lime-500  '>
       <div className='flex justify-between items-center container  pt-2 pb-2 text-white'>
           <div className="flex items-center gap-3">
+
             <div className="flex  items-center justify-center gap-1" >
               <img src={logo} alt="logo" className='h-12' />
 To-Dos

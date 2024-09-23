@@ -9,7 +9,7 @@ import Home from './pages/Home'
 import TodoPage from './pages/TodoPage'
 import ProtectedRoutes from './utils/ProtectedRoutes'
 
-import { AuthProvider, useAuth } from './context/AuthContext'
+import { AuthProvider, } from './context/AuthContext'
 
 
 const route = createBrowserRouter([

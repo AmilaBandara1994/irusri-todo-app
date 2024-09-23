@@ -2,7 +2,7 @@ import { Add, Delete, Description,  Done,  Pending,   Title, Update } from '@mui
 import { IconButton, InputAdornment, TextField } from '@mui/material'
 
 import { useFormik } from 'formik';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 // import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 
@@ -41,7 +41,6 @@ const TodoItems = () => {
                 }]);
         
             }
-          localStorage.setItem('todos', JSON.stringify(todos));
           resetForm({values:''})
         
         }
@@ -52,20 +51,23 @@ const TodoItems = () => {
         setTodos((prevTodos) =>
             prevTodos.filter((td) => (td.id !== todo.id))
           );
-        localStorage.setItem('todos', JSON.stringify(todos));
       };
+
       const update = (todo) => {
         formik.setValues(todo);
       };
+
+
       const isDone = (todo) => {
           todo.isComplete = !todo.isComplete;
         setTodos((prevTodos) =>
             prevTodos.map((td) => (td.id === todo.id ? todo : td))
           );
-          localStorage.setItem('todos', JSON.stringify(todos));
       };
 
-
+    useEffect(()=>{
+        localStorage.setItem('todos', JSON.stringify(todos));
+    },[todos])
 
   return (
     <div className=''>

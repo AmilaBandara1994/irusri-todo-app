@@ -1,4 +1,4 @@
-import React, {  useState ,  useContext} from 'react';
+import React, {  useState ,  useContext, useEffect} from 'react';
 
 const AuthContext = React.createContext()
 
@@ -19,7 +19,9 @@ export function AuthProvider(props){
         isLoggedIn,
         setIsLoggedIn
     }
-
+    useEffect(()=>{
+        localStorage.setItem('users', JSON.stringify(users));
+    },[users])
     return (
         <AuthContext.Provider value={value}> {props.children} </AuthContext.Provider>
     )
